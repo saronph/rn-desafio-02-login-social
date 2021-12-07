@@ -88,18 +88,17 @@ function AuthProvider({ children }: AuthProviderData) {
 
   async function signOut() {
     try {
-      setIsLoggingOut(true);
+      // set isLoggingOut to true
 
-      await revokeAsync({ token: userToken, clientId: CLIENT_ID }, 
-        { revocationEndpoint: twitchEndpoints.revocation });
+      // call revokeAsync with access_token, client_id and twitchEndpoint revocation
     } catch (error) {
     } finally {
-      setUser({} as User);
-      setUserToken('');
+      // set user state to an empty User object
+      // set userToken state to an empty string
 
-      delete api.defaults.headers.authorization;
-      
-      setIsLoggingIn(false);
+      // remove "access_token" from request's authorization header
+
+      // set isLoggingOut to false
     }
   }
 
